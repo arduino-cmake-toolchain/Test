@@ -24,4 +24,4 @@ jobs:
     strategy:
       matrix: ${{fromJson(needs.job1.outputs.matrix)}}
     steps:
-    - run: echo "$MATRIX_CONTEXT"
+    - run: echo "${{ matrix.project }}"
