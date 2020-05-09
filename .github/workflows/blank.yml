@@ -21,7 +21,7 @@ jobs:
       run: echo "::set-env name=cache_list::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
     
     - name: Print Cache items
-      run: echo ${{fromJson(env.cache_list.include[0].project}}
+      run: echo ${{fromJson(env.cache_list)}}
     
     - name: Find CMake version
       run: cmake --version
