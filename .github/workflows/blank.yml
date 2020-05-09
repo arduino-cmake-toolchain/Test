@@ -18,10 +18,10 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Find cache items
-      run: echo ::set-env name=cache_list::[\"yellow\", \"green\"]
+      run: echo "::set-env name=cache_list::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
     
     - name: Print Cache items
-      run: echo ${{fromJson(env.cache_list}}
+      run: echo ${{fromJson(env.cache_list.include[0].project}}
     
     - name: Find CMake version
       run: cmake --version
