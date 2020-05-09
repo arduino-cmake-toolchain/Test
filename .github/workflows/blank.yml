@@ -19,7 +19,12 @@ jobs:
     
     - name: Find cache items
       run: echo "::set-env name=cache_list::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
-    
+      if: ${{ matrix.os }} != windows-latest
+
+    - name: Find cache items
+      run: echo ::set-env name=cache_list::{\"include\":[{"project":"foo","config":"Debug"},{"project":"bar","config":"Release"}]}
+      if: ${{ matrix.os }} == windows-latest
+      
     - name: Print Cache items
       run: echo ${{fromJson(env.cache_list)}}
     
